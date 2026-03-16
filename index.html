@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Login App</title>
+
+<style>
+
+body{
+font-family: Arial;
+text-align:center;
+background:#f2f2f2;
+}
+
+.container{
+margin-top:80px;
+background:white;
+padding:20px;
+border-radius:10px;
+width:300px;
+margin-left:auto;
+margin-right:auto;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+input{
+width:90%;
+padding:10px;
+margin:10px;
+}
+
+button{
+padding:10px;
+width:95%;
+background:#2e7dff;
+color:white;
+border:none;
+border-radius:5px;
+}
+
+#status{
+margin-top:15px;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Login System</h2>
+
+<input id="userid" placeholder="User ID">
+
+<input id="password" type="password" placeholder="Password">
+
+<button onclick="createAccount()">Create Account</button>
+
+<button onclick="login()">Login</button>
+
+<div id="status"></div>
+
+</div>
+
+<script>
+
+var API="https://script.google.com/macros/s/AKfycbypgU6Iq7uG12KCsk--1HE0ZkxpAp4alv_Whhvo7Oj0ttlstQPIbXEQExl5i6W1BYqc/exec";
+
+function createAccount(){
+
+var user=document.getElementById("userid").value;
+var pass=document.getElementById("password").value;
+
+fetch(API+"?action=create&userid="+user+"&password="+pass)
+.then(r=>r.text())
+.then(data=>{
+document.getElementById("status").innerText=data;
+});
+
+}
+
+function login(){
+
+var user=document.getElementById("userid").value;
+var pass=document.getElementById("password").value;
+
+fetch(API+"?action=login&userid="+user+"&password="+pass)
+.then(r=>r.text())
+.then(data=>{
+
+if(data=="LOGIN_SUCCESS"){
+document.getElementById("status").innerText="Login Successful";
+}
+else{
+document.getElementById("status").innerText=data;
+}
+
+});
+
+}
+
+</script>
+
+</body>
+  </html>
