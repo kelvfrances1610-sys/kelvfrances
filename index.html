@@ -76,7 +76,7 @@ function createAccount(){
 var user=document.getElementById("userid").value;
 var pass=document.getElementById("password").value;
 
-fetch(API+"?action=create&userid="+user+"&password="+pass)
+fetch(API+"?action=create&userid="+encodeURIComponent(user)+"&password="+encodeURIComponent(pass))
 .then(r=>r.text())
 .then(data=>{
 document.getElementById("status").innerText=data;
@@ -89,7 +89,7 @@ function login(){
 var user=document.getElementById("userid").value;
 var pass=document.getElementById("password").value;
 
-fetch(API+"?action=login&userid="+user+"&password="+pass)
+fetch(API+"?action=login&userid="+encodeURIComponent(user)+"&password="+encodeURIComponent(pass))
 .then(r=>r.text())
 .then(data=>{
 
