@@ -94,17 +94,17 @@ fetch(API+"?action=login&userid="+user+"&password="+pass)
 .then(data=>{
 
 if(data=="LOGIN_SUCCESS"){
-document.getElementById("status").innerText="Login Successful";
+
+window.location.href="dashboard.html";
+
 }
+
 else{
+
 document.getElementById("status").innerText=data;
+
 }
 
 });
 
 }
-
-</script>
-
-</body>
-  </html>
