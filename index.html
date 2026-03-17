@@ -76,7 +76,7 @@ function createAccount(){
 var user=document.getElementById("userid").value;
 var pass=document.getElementById("password").value;
 
-fetch(API+"?action=create&userid="+encodeURIComponent(user)+"&password="+encodeURIComponent(pass))
+fetch(API+"?action=create&userid="+user+"&password="+pass)
 .then(r=>r.text())
 .then(data=>{
 document.getElementById("status").innerText=data;
@@ -89,22 +89,22 @@ function login(){
 var user=document.getElementById("userid").value;
 var pass=document.getElementById("password").value;
 
-fetch(API+"?action=login&userid="+encodeURIComponent(user)+"&password="+encodeURIComponent(pass))
+fetch(API+"?action=login&userid="+user+"&password="+pass)
 .then(r=>r.text())
 .then(data=>{
 
 if(data=="LOGIN_SUCCESS"){
-
-window.location.href="dashboard.html";
-
+document.getElementById("status").innerText="Login Successful";
 }
-
 else{
-
 document.getElementById("status").innerText=data;
-
 }
 
 });
 
 }
+
+</script>
+
+</body>
+</html>
